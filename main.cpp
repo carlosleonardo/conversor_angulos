@@ -1,48 +1,80 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
-int main() {
-    setlocale(LC_ALL, "pt-br.UTF-8");
-    std::cout << "Conversor de Ângulos" << std::endl;
-    bool sair = false;
-    const double PI = 4 * std::atan(1.0);
-    do {
-        std::cout << "Escolha a conversão desejada:" << std::endl;
-        std::cout << "1 - Graus para Radianos" << std::endl;
-        std::cout << "2 - Radianos para Graus" << std::endl;
-        std::cout << "0 - Sair" << std::endl;
-        int escolha;
-        std::cin >> escolha;
+void tratar_erro(const std::string& mensagem) {
+    std::cin.clear(); // Limpa o estado de erro
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descarta a entrada inválida
+    std::cout << mensagem << std::endl;
+}
+
+void converter_graus_radianos(const double PI) {
+    double graus;
+
+    bool sucesso = false;
+    while (!sucesso) {
+        std::cout << "Digite o valor em graus: ";
+        std::cin >> graus;
         if (std::cin.fail()) {
-            std::cin.clear(); // Limpa o estado de falha
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descarta a entrada inválida
-            std::cout << "Entrada inválida. Tente novamente." << std::endl;
+            tratar_erro("Entrada inválida.");
             continue;
         }
-        switch (escolha) {
+        double radianos = graus * (PI / 180.0);
+        std::cout << graus << " graus é igual a " << radianos << " radianos." << std::endl;
+        sucesso = true;
+    }
+}
+
+void converter_radianos_graus(const double PI) {
+    double radianos;
+    bool sucesso = false;
+    while (!sucesso) {
+        std::cout << "Digite o valor em radianos: ";
+        std::cin >> radianos;
+        if (std::cin.fail()) {
+            tratar_erro("Entrada inválida.");
+            continue;
+        }
+        double graus = radianos * (180.0 / PI);
+        std::cout << radianos << " radianos é igual a " << graus << " graus." << std::endl;
+        sucesso = true;
+    }
+
+}
+
+int main() {
+    setlocale(LC_ALL, ".UTF-8");
+    std::cout << "Conversor de Ângulos!" << std::endl;
+    constexpr double PI = 4* std::atan(1);
+    bool sair = false;
+    do {
+        std::cout << " M E N U " << std::endl;
+        std::cout << "1 - Converter Graus para Radianos" << std::endl;
+        std::cout << "2 - Converter Radianos para Graus" << std::endl;
+        std::cout << "3 - Sair" << std::endl;
+        std::cout << "Escolha uma opção (1 a 3): ";
+        int opcao;
+        std::cin >> opcao;
+        if (std::cin.fail()) {
+            tratar_erro("Entrada inválida.");
+            continue; // Pede a opção novamente
+        }
+        switch (opcao) {
             case 1: {
-                double graus;
-                std::cout << "Digite o valor em graus: ";
-                std::cin >> graus;
-                double radianos = graus * PI / 180.0;
-                std::cout << graus << " graus equivalem a " << radianos << " radianos." << std::endl;
+                converter_graus_radianos(PI);
                 break;
             }
             case 2: {
-                double radianos;
-                std::cout << "Digite o valor em radianos: ";
-                std::cin >> radianos;
-                double graus = radianos * 180.0 / PI;
-                std::cout << radianos << " radianos equivalem a " << graus << " graus." << std::endl;
+                converter_radianos_graus(PI);
                 break;
             }
-            case 0:
-                std::cout << "Encerrando o programa." << std::endl;
+            case 3:
+                std::cout << "Saindo do programa. Até mais!" << std::endl;
                 sair = true;
                 break;
             default:
-                std::cout << "Opção inválida. Tente novamente." << std::endl;
+                std::cout << "Opção inválida! Por favor, escolha uma opção válida." << std::endl;
         }
+
     } while (!sair);
     return 0;
 }
