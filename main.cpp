@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-void tratar_erro(const std::string& mensagem) {
+void tratar_erro(const std::string &mensagem) {
     std::cin.clear(); // Limpa o estado de erro
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descarta a entrada inválida
     std::cout << mensagem << std::endl;
@@ -38,13 +38,12 @@ void converter_radianos_graus(const double PI) {
         std::cout << radianos << " radianos é igual a " << graus << " graus." << std::endl;
         sucesso = true;
     }
-
 }
 
 int main() {
     setlocale(LC_ALL, ".UTF-8");
     std::cout << "Conversor de Ângulos!" << std::endl;
-    constexpr double PI = 4* std::atan(1);
+    const double PI = 4 * std::atan(1);
     bool sair = false;
     do {
         std::cout << " M E N U " << std::endl;
@@ -74,7 +73,6 @@ int main() {
             default:
                 std::cout << "Opção inválida! Por favor, escolha uma opção válida." << std::endl;
         }
-
     } while (!sair);
     return 0;
 }
