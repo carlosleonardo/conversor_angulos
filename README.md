@@ -22,7 +22,7 @@ permite que o usuário insira um valor em graus e obtenha o valor correspondente
 - Git (opcional, para clonar o repositório)
 - Um terminal ou prompt de comando
 - Um editor de texto ou IDE para visualizar e editar o código-fonte
-- Acesso à internet (opcional, para clonar o repositório)
+- Acesso à internet 
 - Conhecimento básico de C++ e do uso do terminal
 - Permissões para executar comandos no terminal
 - Espaço suficiente em disco para armazenar o código-fonte e os arquivos de build
