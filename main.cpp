@@ -18,7 +18,7 @@ void converter_graus_radianos(const double PI) {
             tratar_erro("Entrada inválida.");
             continue;
         }
-        double radianos = graus * (PI / 180.0);
+        const double radianos = graus * (PI / 180.0);
         std::cout << graus << " graus é igual a " << radianos << " radianos." << std::endl;
         sucesso = true;
     }
@@ -34,7 +34,7 @@ void converter_radianos_graus(const double PI) {
             tratar_erro("Entrada inválida.");
             continue;
         }
-        double graus = radianos * (180.0 / PI);
+        const double graus = radianos * (180.0 / PI);
         std::cout << radianos << " radianos é igual a " << graus << " graus." << std::endl;
         sucesso = true;
     }
