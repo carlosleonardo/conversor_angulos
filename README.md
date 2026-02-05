@@ -56,5 +56,5 @@ permite que o usuário insira um valor em graus e obtenha o valor correspondente
 
 - Certifique-se de ter todas as dependências necessárias instaladas.
 - Se você encontrar algum erro durante o processo de build, verifique as mensagens de erro para
-- identificar o problema.
+identificar o problema.
 - Consulte a documentação do CMake e do seu compilador para obter ajuda adicional, se necessário.

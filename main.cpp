@@ -1,5 +1,8 @@
 #include <cmath>
 #include <iostream>
+#include <clocale>
+#include <limits>
+#include <numbers>
 
 void tratar_erro(const std::string &mensagem) {
     std::cin.clear(); // Limpa o estado de erro
@@ -7,7 +10,7 @@ void tratar_erro(const std::string &mensagem) {
     std::cout << mensagem << std::endl;
 }
 
-void converter_graus_radianos(const double PI) {
+void converter_graus_radianos() {
     double graus;
 
     bool sucesso = false;
@@ -18,13 +21,13 @@ void converter_graus_radianos(const double PI) {
             tratar_erro("Entrada inválida.");
             continue;
         }
-        const double radianos = graus * (PI / 180.0);
+        const double radianos = graus * (std::numbers::pi / 180.0);
         std::cout << graus << " graus é igual a " << radianos << " radianos." << std::endl;
         sucesso = true;
     }
 }
 
-void converter_radianos_graus(const double PI) {
+void converter_radianos_graus() {
     double radianos;
     bool sucesso = false;
     while (!sucesso) {
@@ -34,7 +37,7 @@ void converter_radianos_graus(const double PI) {
             tratar_erro("Entrada inválida.");
             continue;
         }
-        const double graus = radianos * (180.0 / PI);
+        const double graus = radianos * (180.0 / std::numbers::pi);
         std::cout << radianos << " radianos é igual a " << graus << " graus." << std::endl;
         sucesso = true;
     }
@@ -43,7 +46,6 @@ void converter_radianos_graus(const double PI) {
 int main() {
     setlocale(LC_ALL, ".UTF-8");
     std::cout << "Conversor de Ângulos!" << std::endl;
-    const double PI = 4 * std::atan(1);
     bool sair = false;
     do {
         std::cout << " M E N U " << std::endl;
@@ -59,11 +61,11 @@ int main() {
         }
         switch (opcao) {
             case 1: {
-                converter_graus_radianos(PI);
+                converter_graus_radianos();
                 break;
             }
             case 2: {
-                converter_radianos_graus(PI);
+                converter_radianos_graus();
                 break;
             }
             case 3:
